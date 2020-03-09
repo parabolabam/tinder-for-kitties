@@ -1,12 +1,14 @@
 <template>
-  <div>
+  <base-layout>
     UserHome view
-  </div>
+  </base-layout>
 </template>
 
 <script>
+import BaseLayout from '@/views/BaseLayout.vue';
+
 export default {
   name: 'user-home',
-  components: {},
+  components: { BaseLayout },
 };
 </script>
