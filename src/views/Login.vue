@@ -47,12 +47,14 @@ export default {
   },
   methods: {
     async login() {
-      const user = await auth.signInWithEmailAndPassword(
+      // the ine below return user data
+      await auth.signInWithEmailAndPassword(
         this.loginFormData.email,
         this.loginFormData.password,
       );
 
-      this.$store.commit('setCurrentUser', user);
+      // TODO: fill store with user values
+
       this.$router.replace({ name: 'Home' });
     },
   },
