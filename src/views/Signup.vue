@@ -21,7 +21,6 @@
 </template>
 
 <script>
-
 import { SIGN_UP } from '@/store/actions.types';
 
 export default {
