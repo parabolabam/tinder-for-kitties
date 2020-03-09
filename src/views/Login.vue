@@ -32,7 +32,8 @@
 </template>
 
 <script>
-import { auth } from '../../firebaseConfig';
+
+import { LOGIN } from '@/store/actions.types';
 
 export default {
   name: 'login',
@@ -50,16 +51,7 @@ export default {
       this.$router.replace({ name: 'Signup' });
     },
     async login() {
-      // the ine below return user data
-      const user = await auth.signInWithEmailAndPassword(
-        this.loginFormData.email,
-        this.loginFormData.password,
-      );
-
-      this.$store.commit('setCurrentUser', user);
-      this.$store.dispatch('fetchUserProfile');
-
-      // TODO: fill store with user values
+      await this.$store.dispatch(LOGIN, this.loginFormData);
 
       this.$router.replace({ name: 'Home' });
     },

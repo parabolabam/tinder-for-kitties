@@ -21,7 +21,8 @@
 </template>
 
 <script>
-import { auth, usersCollection } from '../../firebaseConfig';
+
+import { SIGN_UP } from '@/store/actions.types';
 
 export default {
   name: 'login',
@@ -40,23 +41,10 @@ export default {
       this.$router.replace({ name: 'Login' });
     },
     async signup() {
-      const { user } = await auth.createUserWithEmailAndPassword(
-        this.signupForm.email,
-        this.signupForm.password,
-      );
-
-
-      this.$store.commit('setCurrentUser', user);
-
-
-      // create user obj
-      await usersCollection
-        .doc(user.uid)
-        .set({
-          email: this.signupForm.email,
-        });
-
-      this.$store.dispatch('fetchUserProfile');
+      await this.$store.dispatch(SIGN_UP, {
+        email: this.signupForm.email,
+        password: this.signupForm.password,
+      });
 
       this.$router.replace({ name: 'Home' });
     },

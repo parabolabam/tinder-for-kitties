@@ -5,15 +5,15 @@
 </template>
 
 <script>
-import { auth } from '../../firebaseConfig';
+import { LOGOUT } from '@/store/actions.types';
 
 export default {
   name: 'navigation',
   components: {},
   methods: {
     async logout() {
-      debugger;
-      await auth.signOut();
+      await this.$store.dispatch(LOGOUT);
+
       this.$router.replace({ name: 'Login' });
     },
   },
