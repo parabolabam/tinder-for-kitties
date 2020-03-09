@@ -45,12 +45,18 @@ export default {
         this.signupForm.password,
       );
 
+
+      this.$store.commit('setCurrentUser', user);
+
+
       // create user obj
       await usersCollection
         .doc(user.uid)
         .set({
           email: this.signupForm.email,
         });
+
+      this.$store.dispatch('fetchUserProfile');
 
       this.$router.replace({ name: 'Home' });
     },

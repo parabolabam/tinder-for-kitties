@@ -51,10 +51,13 @@ export default {
     },
     async login() {
       // the ine below return user data
-      await auth.signInWithEmailAndPassword(
+      const user = await auth.signInWithEmailAndPassword(
         this.loginFormData.email,
         this.loginFormData.password,
       );
+
+      this.$store.commit('setCurrentUser', user);
+      this.$store.dispatch('fetchUserProfile');
 
       // TODO: fill store with user values
 
