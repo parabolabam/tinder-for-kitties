@@ -4,8 +4,7 @@ import firebase from 'firebase';
 
 import Login from '@/views/Login.vue';
 import UserHome from '@/views/UserHome.vue';
-// import Dashboard from '@/components/Dashboard';
-// import Settings from '@/components/Settings';
+import Signup from '@/views/Signup.vue';
 
 Vue.use(Router);
 
@@ -23,6 +22,12 @@ const router = new Router({
     },
 
     {
+      path: '/signup',
+      name: 'Signup',
+      component: Signup,
+    },
+
+    {
       path: '/home',
       name: 'Home',
       component: UserHome,
@@ -37,8 +42,6 @@ const router = new Router({
 router.beforeEach((to, from, next) => {
   const requiresAuth = to.matched.some((x) => x.meta.requiresAuth);
   const { currentUser } = firebase.auth();
-
-  debugger;
 
   if (requiresAuth && !currentUser) {
     next({ name: 'Login' });
