@@ -1,4 +1,3 @@
-
 import { auth, usersCollection } from '../../firebaseConfig';
 
 class AuthService {
