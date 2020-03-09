@@ -1,4 +1,3 @@
-
 import {
   SET_CURRENT_USER,
   SET_USER_PROFILE,
