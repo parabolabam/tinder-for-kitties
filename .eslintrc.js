@@ -16,6 +16,10 @@ module.exports = {
   rules: {
     'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    'class-methods-use-this': 0,
+
+    //TODO: not to forget to check what it is out
+    'no-shadow': 0
   },
   overrides: [
     {
