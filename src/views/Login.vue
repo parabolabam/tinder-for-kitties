@@ -23,7 +23,7 @@
 
           <div class="extras">
             <a>Forgot Password</a>
-            <a>Create an Account</a>
+            <router-link :to="{ name: 'Signup' }">Create an Account</router-link>
           </div>
         </form>
       </div>
@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import { auth } from '../../firebaseConfig';
+import { LOGIN } from '@/store/actions.types';
 
 export default {
   name: 'login',
@@ -47,12 +47,7 @@ export default {
   },
   methods: {
     async login() {
-      const user = await auth.signInWithEmailAndPassword(
-        this.loginFormData.email,
-        this.loginFormData.password,
-      );
-
-      this.$store.commit('setCurrentUser', user);
+      this.$store.dispatch(LOGIN, this.loginFormData);
       this.$router.replace({ name: 'Home' });
     },
   },

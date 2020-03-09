@@ -1,9 +1,24 @@
+import { auth, usersCollection } from '../../firebaseConfig';
+
 class AuthService {
-  login() {}
+  login({ email, password }) {
+    return auth.signInWithEmailAndPassword(
+      email,
+      password,
+    );
+  }
 
-  logout() {}
+  async logout() {
+    await auth.signOut();
+  }
 
-  signup() {}
+  async signup({ email, password }) {
+    const { user } = await auth.createUserWithEmailAndPassword(email, password);
+
+    await usersCollection.doc(user.uid).set({ email });
+
+    return { user };
+  }
 }
 
 export default new AuthService();
