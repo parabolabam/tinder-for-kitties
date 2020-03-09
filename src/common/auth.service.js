@@ -8,8 +8,8 @@ class AuthService {
     );
   }
 
-  async logout() {
-    await auth.signOut();
+  logout() {
+    auth.signOut();
   }
 
   async signup({ email, password }) {
