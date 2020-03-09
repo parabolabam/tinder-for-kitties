@@ -1,6 +1,6 @@
 <template>
   <div id="login">
-    <section>
+    <div>
       <div class="col2">
         <form>
           <h1>Welcome Back</h1>
@@ -27,16 +27,21 @@
           </div>
         </form>
       </div>
-    </section>
+    </div>
+    <overlay v-if="!userLoaded" />
+
   </div>
 </template>
 
 <script>
 import { LOGIN } from '@/store/actions.types';
+import Overlay from '@/globalComponents/Overlay.vue';
 
 export default {
   name: 'login',
-  components: {},
+  components: {
+    Overlay,
+  },
   data() {
     return {
       loginFormData: {
@@ -45,9 +50,15 @@ export default {
       },
     };
   },
+  computed: {
+    userLoaded() {
+      return !this.$store.state.auth.loginInProgress;
+    },
+  },
   methods: {
     async login() {
-      this.$store.dispatch(LOGIN, this.loginFormData);
+      await this.$store.dispatch(LOGIN, this.loginFormData);
+
       this.$router.replace({ name: 'Home' });
     },
   },
