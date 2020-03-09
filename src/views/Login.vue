@@ -32,7 +32,6 @@
 </template>
 
 <script>
-
 import { LOGIN } from '@/store/actions.types';
 
 export default {
