@@ -1,14 +1,20 @@
 <template>
   <div class="navigaions">
-    <button @click="logout"></button>
+    <button @click="logout">LOG OUT</button>
   </div>
 </template>
 
 <script>
+import { LOGOUT } from '@/store/actions.types';
+
 export default {
   name: 'navigations',
   methods: {
-    logout() {},
+    async logout() {
+      await this.$store.dispatch(LOGOUT);
+
+      this.$router.replace({ name: 'Login' });
+    },
   },
 };
 </script>
