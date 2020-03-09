@@ -23,7 +23,7 @@
 
           <div class="extras">
             <a>Forgot Password</a>
-            <a>Create an Account</a>
+            <a @click.prevent="goToSignup">Create an Account</a>
           </div>
         </form>
       </div>
@@ -46,6 +46,9 @@ export default {
     };
   },
   methods: {
+    goToSignup() {
+      this.$router.replace({ name: 'Signup' });
+    },
     async login() {
       const user = await auth.signInWithEmailAndPassword(
         this.loginFormData.email,
