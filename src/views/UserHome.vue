@@ -1,6 +1,8 @@
 <template>
   <base-layout>
-    UserHome view
+    <div class="userHomeContainer">
+      UserHome view
+    </div>
   </base-layout>
 </template>
 
@@ -12,3 +14,11 @@ export default {
   components: { BaseLayout },
 };
 </script>
+
+<style lang="scss" scoped>
+.userHomeContainer {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+</style>

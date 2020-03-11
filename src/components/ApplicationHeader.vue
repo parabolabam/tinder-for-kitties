@@ -1,6 +1,6 @@
 <template>
-  <div>
-    header
+  <div class="header">
+    <div class="logo">LOGO GOD DaMN</div>
     <navigations />
   </div>
 </template>
@@ -16,6 +16,11 @@ export default {
 };
 </script>
 
-<style>
-
+<style lang="scss" scoped>
+.header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 5rem;
+}
 </style>

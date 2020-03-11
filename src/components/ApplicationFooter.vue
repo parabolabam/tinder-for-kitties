@@ -1,7 +1,7 @@
 <template>
-  <div class="footer">
+  <footer class="footer">
     footer
-  </div>
+  </footer>
 </template>
 
 <script>
@@ -10,6 +10,10 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
+.footer {
+  position: absolute;
+  width: 100%;
+}
 
 </style>
