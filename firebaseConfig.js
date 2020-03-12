@@ -27,6 +27,8 @@ const postsCollection = db.collection('posts');
 const commentsCollection = db.collection('comments');
 const likesCollection = db.collection('likes');
 
+export const fieldValue = firebase.firestore.FieldValue;
+
 export {
   db,
   auth,

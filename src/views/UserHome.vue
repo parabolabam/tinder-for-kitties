@@ -1,7 +1,7 @@
 <template>
   <base-layout>
     <div class="userHomeContainer">
-      UserHome view
+      <router-view></router-view>
     </div>
   </base-layout>
 </template>

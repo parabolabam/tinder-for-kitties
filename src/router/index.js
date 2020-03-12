@@ -1,15 +1,16 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import firebase from 'firebase';
+import home from '@/router/home';
 
 import Login from '@/views/Login.vue';
 import Signup from '@/views/Signup.vue';
-import UserHome from '@/views/UserHome.vue';
 
 Vue.use(Router);
 
 const router = new Router({
-  mode: 'history',
+  mode: 'hash',
+
   routes: [
     {
       path: '*',
@@ -26,16 +27,7 @@ const router = new Router({
       name: 'Signup',
       component: Signup,
     },
-
-    {
-      path: '/home',
-      name: 'Home',
-      component: UserHome,
-      meta: {
-        requiresAuth: true,
-      },
-    },
-
+    ...home,
   ],
 });
 

@@ -1,9 +1,8 @@
 import Vue from 'vue';
-// import { auth } from 'firebase-config';
+import { validationDirective } from '@/directives/validation.directive';
 import App from './App.vue';
 import router from './router';
 import store from './store';
-
 import { auth } from '../firebaseConfig';
 
 Vue.config.productionTip = false;
@@ -19,6 +18,8 @@ auth.onAuthStateChanged((user) => {
     }).$mount('#app');
   }
 });
+
+Vue.directive(validationDirective.name, validationDirective.directive);
 
 new Vue({
   router,

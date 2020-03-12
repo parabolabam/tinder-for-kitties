@@ -3,7 +3,7 @@ import {
 } from '@/store/actions.types';
 import { SET_CURRENT_USER } from '@/store/mutations.types';
 
-import authService from '@/common/auth.service';
+import authService from '@/services/auth.service';
 
 export const state = {
   currentUser: null,

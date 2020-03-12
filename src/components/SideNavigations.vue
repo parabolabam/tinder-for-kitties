@@ -1,19 +1,14 @@
 <template>
   <div :class="['sideNavigationContainer', {hidden: !this.openMenu, visible: this.openMenu}]">
     <div class="sideMenu">
-      <ul>
-        <li class="kek">menu item 1</li>
-        <li class="kek">menu item 1</li>
-        <li class="kek">menu item 1</li>
-        <li class="kek">menu item 1</li>
-        <li class="kek">menu item 1</li>
-        <li class="kek">menu item 1</li>
-        <li class="kek">menu item 1</li>
-        <li class="kek">menu item 1</li>
-        <li class="kek">menu item 1</li>
-        <li class="kek">menu item 1</li>
-
-      </ul>
+      <basic-link
+          v-for="({ to }, index) in menuRefs"
+          :key="index"
+          @basicLinkClicked="onBasicLinkClicked"
+          :to="to"
+        >
+          Create new post item
+        </basic-link>
     </div>
     <burger-menu-button class="burgerButton" @menutoggle="onMenuToggle" />
   </div>
@@ -21,15 +16,18 @@
 
 <script>
 import BurgerMenuButton from '@/components/BurgerMenuButton.vue';
+import BasicLink from '@/components/BasicLink.vue';
 
 export default {
   name: 'side-navigations',
   components: {
     BurgerMenuButton,
+    BasicLink,
   },
   data() {
     return {
       openMenu: false,
+      menuRefs: [{ to: { name: 'PostCreator' } }],
     };
   },
   methods: {
@@ -46,7 +44,7 @@ export default {
   transition: all 0.2s ease-in-out;
 
   &.hidden {
-    transform: translateX(-9.5rem);
+    transform: translateX(-11rem);
   }
 
   &.visible {
